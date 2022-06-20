@@ -23,9 +23,11 @@ screen.onkeypress(fun=l_paddle.down, key="s")
 
 GAME_IS_ON = True
 while GAME_IS_ON:
-    sleep(0.06)
+    sleep(ball.move_speed)
     screen.update()
     ball.move()
+    ball.reset_ball()
+
     if ball.ycor() >= 280 or ball.ycor() <= -280:
         ball.bounce_off_edge()
 
@@ -34,8 +36,5 @@ while GAME_IS_ON:
 
     if ball.distance(l_paddle) < 50 and ball.xcor() < -330:
         ball.bounce_off_paddle()
-    
-    # if ball.xcor() > 360 or ball.xcor() < -360:
-
 
 screen.exitonclick()
